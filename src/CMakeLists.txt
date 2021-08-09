@@ -53,7 +53,7 @@ target_link_libraries(onnx-mlir MainUtils)
 
 # Locate llc, which is needed for translating LLVM bitcode
 # to object file.
-if(NOT EXISTS "${LLVM_PROJ_BUILD}/bin/llc")
+if(NOT EXISTS "${LLVM_PROJ_TOOLS}/bin/llc")
   message(ERROR "Cannot find llc.")
 endif()
 
