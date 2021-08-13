@@ -24,6 +24,19 @@ else()
   message(FATAL_ERROR "env variable LLVM_PROJ_BUILD not set")
 endif()
 
+# Path to LLVM tools folder (reduced-size output containing llc/opt tools)
+if(DEFINED ENV{LLVM_PROJ_TOOLS})
+  set(LLVM_PROJ_TOOLS $ENV{LLVM_PROJ_TOOLS})
+  if(EXISTS ${LLVM_PROJ_TOOLS})
+    message(STATUS "LLVM_PROJ_TOOLS         : " ${LLVM_PROJ_TOOLS})
+  else()
+    message(FATAL_ERROR "The path specified by LLVM_PROJ_TOOLS does not exist: "
+            ${LLVM_PROJ_TOOLS})
+  endif()
+else()
+  message(FATAL_ERROR "env variable LLVM_PROJ_TOOLS not set")
+endif()
+
 # LLVM project lib folder
 if (ENV{LLVM_PROJECT_LIB})
   set(LLVM_PROJECT_LIB $ENV{LLVM_PROJECT_LIB})
